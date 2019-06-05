@@ -21,8 +21,9 @@ return(randNumber);
 generateNum();
 // console.log(randNumber);
 generateCrystal();
-displayCrystal();
 
+// function playagain(){
+// generateNum();
 
 // }
 function generateCrystal(){
@@ -42,15 +43,6 @@ numberOptions.push(crystalNumber);
 //assign crystalNumber to numberOptions array
 
 // console.log(numberOptions);
-//     // Each imageCrystal will be given a data attribute called data-crystalValue.
-//     // This data attribute will be set equal to the array value.
-imageCrystal.attr("data-crystalvalue", numberOptions[i]);
-return(imageCrystal.attr("data-crystalvalue", numberOptions[i]));
-}
-}
-
-function displayCrystal(){
-for (var i = 0; i < numberofCrystals; i++) {
 //     // For each iteration, we will create an imageCrystal
     var imageCrystal = $("<img>");
 
@@ -62,19 +54,23 @@ for (var i = 0; i < numberofCrystals; i++) {
 //     // Each imageCrystal will be given a src link to the crystal image
     imageCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
 
-
+//     // Each imageCrystal will be given a data attribute called data-crystalValue.
+//     // This data attribute will be set equal to the array value.
+    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
 
 //     // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
     $("#crystals").append(imageCrystal);
   }
-
 }
 
 
 
 
 //   // This time, our click event applies to every single crystal on the page. Not just one.
-  $(".crystal-image").on("click", function() {
+ 
+
+function playGame(){
+$(".crystal-image").on("click", function() {
 
 //     // Determining the crystal's value requires us to extract the value from the data attribute.
 //     // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
@@ -98,8 +94,6 @@ $("#counter").text(counter);
       counter=0;
       wins++;
       $("#wins").text(wins);
-      generateNum();
-      generateCrystal();
     }
 
     else if (counter > randNumber) {
@@ -107,11 +101,14 @@ $("#counter").text(counter);
       counter=0;
       loses++;
       $("#loses").text(loses);
-      generateNum();
-      generateCrystal();
 
     }
+}
 
+    generateNum();
+    // console.log(randNumber);
+    generateCrystal();
+    
   });
 
 //   </script>
