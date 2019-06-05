@@ -21,7 +21,7 @@ return(randNumber);
 generateNum();
 // console.log(randNumber);
 generateCrystal();
-displayCrystal();
+
 
 
 // }
@@ -42,14 +42,12 @@ numberOptions.push(crystalNumber);
 //assign crystalNumber to numberOptions array
 
 // console.log(numberOptions);
-//     // Each imageCrystal will be given a data attribute called data-crystalValue.
-//     // This data attribute will be set equal to the array value.
-imageCrystal.attr("data-crystalvalue", numberOptions[i]);
-return(imageCrystal.attr("data-crystalvalue", numberOptions[i]));
-}
+
+
 }
 
-function displayCrystal(){
+
+
 for (var i = 0; i < numberofCrystals; i++) {
 //     // For each iteration, we will create an imageCrystal
     var imageCrystal = $("<img>");
@@ -60,15 +58,18 @@ for (var i = 0; i < numberofCrystals; i++) {
     imageCrystal.addClass("crystal-image");
 
 //     // Each imageCrystal will be given a src link to the crystal image
-    imageCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
+    imageCrystal.attr("src", "./assets/images/crystal.jpg");
 
-
+//     // Each imageCrystal will be given a data attribute called data-crystalValue.
+//     // This data attribute will be set equal to the array value.
+imageCrystal.attr("data-crystalvalue", numberOptions[i]);
 
 //     // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
     $("#crystals").append(imageCrystal);
   }
 
 }
+
 
 
 
@@ -91,8 +92,7 @@ $("#counter").text(counter);
 
 
 //     // All of the same game win-lose logic applies. So the rest remains unchanged.
-    alert("New score: " + counter);
-
+    
     if (counter === randNumber) {
       alert("You win!");
       counter=0;
