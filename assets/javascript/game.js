@@ -3,8 +3,10 @@ var counter = 0;
 var wins=0;
 var loses=0;
 var randNumber = "";
+var numberOptions = [];
+var crystalNumber =0;
 
- 
+$(document).ready(function(){
 function generateNum(){
   var compNumber = Math.floor(Math.random() * (60 - 30 + 1)) + 30;
 // computer generates a random number from 30 to 60)
@@ -16,11 +18,12 @@ randNumber=compNumber;
 return(randNumber);
 }
 
-
-
 generateNum();
-// console.log(randNumber);
+    // console.log(randNumber);
 generateCrystal();
+//generated rand numbers for crystal and display crystals//
+
+
 
 
 
@@ -29,26 +32,23 @@ function generateCrystal(){
 //   // Now for the hard part. Creating multiple crystals each with their own unique number value.
 
 //   // We begin by expanding creating an array to hold the number value of crystals.
-var numberOptions = [];
+
 var numberofCrystals =4;
 
 //   // Next we create a function and for loop to create crystals for every numberOption.
  
 
 for (var i = 0; i < numberofCrystals; i++) {
-    var crystalNumber = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    crystalNumber = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
 // console.log(crystalNumber);
 numberOptions.push(crystalNumber);
 //assign crystalNumber to numberOptions array
-
+console.log (numberOptions+"this is no.opt");
 // console.log(numberOptions);
 
 
-}
 
 
-
-for (var i = 0; i < numberofCrystals; i++) {
 //     // For each iteration, we will create an imageCrystal
     var imageCrystal = $("<img>");
 
@@ -68,14 +68,15 @@ imageCrystal.attr("data-crystalvalue", numberOptions[i]);
     $("#crystals").append(imageCrystal);
   }
 
+
 }
 
 
 
 
-
 //   // This time, our click event applies to every single crystal on the page. Not just one.
-  $(".crystal-image").on("click", function() {
+  $(document).on("click", ".crystal-image",function() {
+console.log("we are clicking");
 
 //     // Determining the crystal's value requires us to extract the value from the data attribute.
 //     // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
@@ -91,28 +92,42 @@ imageCrystal.attr("data-crystalvalue", numberOptions[i]);
 $("#counter").text(counter);
 
 
-//     // All of the same game win-lose logic applies. So the rest remains unchanged.
+
+
+
+
+//     game logic and play game again//
+if (counter === randNumber) {
+  alert("You win!");
+  counter=0;
+  wins++;
+  $("#wins").text(wins);
+  $("#crystals").empty();
+  console.log(numberOptions);
+  numberOptions = [];
+  generateNum();
+  generateCrystal();
+}
+
+else if (counter > randNumber) {
+  alert("You lose!!");
+  counter=0;
+  loses++;
+  $("#loses").text(loses);
+  $("#crystals").empty();
+  console.log(numberOptions);
+  numberOptions = [];
+  generateNum();
+  generateCrystal();
+
+}
     
-    if (counter === randNumber) {
-      alert("You win!");
-      counter=0;
-      wins++;
-      $("#wins").text(wins);
-      generateNum();
-      generateCrystal();
-    }
 
-    else if (counter > randNumber) {
-      alert("You lose!!");
-      counter=0;
-      loses++;
-      $("#loses").text(loses);
-      generateNum();
-      generateCrystal();
-
-    }
 
   });
+  
+});
+
 
 //   </script>
 
