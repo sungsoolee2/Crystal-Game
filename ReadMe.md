@@ -1,6 +1,10 @@
-// Psychic game homework 3 for Full Stack class Northwestern full time//
-//  Files uploaded index.html  //
-//  style.ccs, reset.css, game.js and psychic1 image jpeg//
+# Crystal Game
 
-// By Sung Lee //
+
+In this assignment, you'll use the GIPHY API to make a dynamic web page that populates with gifs of your choice. To finish this task, you must call the GIPHY API and use JavaScript and jQuery to change the HTML of your site.
+
+   
+  [Deployed Github Link](https://sungsoolee2.github.io/Crystal-Game/)
+
+  ![ScreenShot of App1](/assets/images/screenshot.png)
 
